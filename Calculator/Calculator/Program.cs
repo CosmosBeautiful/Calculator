@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Calculator.Controller;
+using Calculator.Repositories;
+using System;
 
 namespace Calculator
 {
@@ -6,7 +8,22 @@ namespace Calculator
     {
         static void Main()
         {
-            Console.WriteLine("Hello World!");
+            //Poor Man's DI
+            IInputRepository inputRepository = new InputRepository();
+            IPrintRepository printRepository = new PrintRepository();
+            ICalculatorRepository calculatorRepository = new CalculatorRepository();
+            CalculatorController calculator = new CalculatorController(inputRepository, printRepository, calculatorRepository);
+
+            calculator.SolveEquation();
+
+            //Выполнение ->
+            //(
+            //Ввод данных
+
+            //Вызов обработчика
+
+            //Вывод данных
+            //)
         }
     }
 }
