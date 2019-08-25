@@ -32,5 +32,21 @@ namespace Calculator.Models
                     throw new ArgumentException();
             }
         }
+
+        public override bool Equals(object other)
+        {
+            if (other is Operation)
+            {
+                var operand = other as Operation;
+                return ( (Operator == operand.Operator) && (Level == operand.Level) );
+            }
+
+            return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return ( (int)Operator * (int)Level );
+        }
     }
 }
