@@ -4,9 +4,9 @@ namespace Calculator.Models
 {
     public class ElementEquation
     {
-        public double Number { get; private set; }
-        public Operation Operation { get; private set; }
-        public string NestedEquation { get; private set; }
+        public double Number { get; set; }
+        public Operation Operation { get; set; }
+        public string NestedEquation { get; set; }
 
 
         public ElementEquation(double number, OperatorType operatorType)
@@ -19,6 +19,12 @@ namespace Calculator.Models
         {
             this.Operation = new Operation(operatorType);
             this.NestedEquation = nestedEquation;
+        }
+
+        public ElementEquation(double number)
+        {
+            this.Number = number;
+            this.Operation = new Operation(OperatorType.Empty);
         }
 
         public override bool Equals(object other)

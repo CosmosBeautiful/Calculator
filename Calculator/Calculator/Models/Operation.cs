@@ -28,8 +28,9 @@ namespace Calculator.Models
                 case OperatorType.Sub:
                     this.Level = LevelType.Low;
                     break;
-                default:
-                    throw new ArgumentException();
+                case OperatorType.Empty:
+                    this.Level = LevelType.Empty;
+                    break;
             }
         }
 

@@ -6,6 +6,7 @@
         Mul,
         Del,
         Sum,
-        Sub
+        Sub,
+        Empty
     }
 }

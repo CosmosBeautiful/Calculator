@@ -39,12 +39,12 @@ namespace Calculator.Functional
         {
             string nestedEquation = "";
 
-            for (int i = startItem; i <= endItem; i++)
+            for (int i = startItem + 1; i <= endItem; i++)
             {
                 nestedEquation += arrayElements[i] + ' ';
             }
 
-            nestedEquation = nestedEquation.Remove(nestedEquation.Length - 1);
+            nestedEquation = nestedEquation.Remove(nestedEquation.Length - 3);
             return nestedEquation;
         }
 
@@ -55,6 +55,8 @@ namespace Calculator.Functional
             string[] arrayElements = equation.Split(' ');
 
             double number = 0;
+            bool isNumber = false;
+
             for (int i = 0; i < arrayElements.Length; i++)
             {
   
@@ -81,7 +83,12 @@ namespace Calculator.Functional
                         break;
                 }
 
-                Double.TryParse(arrayElements[i], out number);
+                isNumber = Double.TryParse(arrayElements[i], out number);
+            }
+
+            if (isNumber)
+            {
+                elements.Add(new ElementEquation(number));
             }
 
             return elements;

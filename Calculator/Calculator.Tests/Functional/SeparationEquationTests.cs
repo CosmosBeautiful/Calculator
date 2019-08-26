@@ -17,7 +17,7 @@ namespace Calculator.Tests.Functional
             {
                 new ElementEquation(42, OperatorType.Sum),
                 new ElementEquation(18, OperatorType.Del),
-                new ElementEquation(OperatorType.Brackets, "( 6 + 12 / 4 )")
+                new ElementEquation(OperatorType.Brackets, "6 + 12 / 4")
             };
 
             // act
