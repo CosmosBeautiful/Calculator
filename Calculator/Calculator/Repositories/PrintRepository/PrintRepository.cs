@@ -6,7 +6,7 @@ namespace Calculator.Repositories
     {
         public void Print(double result)
         {
-            Console.WriteLine(result);
+            Console.WriteLine($"Ответ: {result}");
         }
     }
 }

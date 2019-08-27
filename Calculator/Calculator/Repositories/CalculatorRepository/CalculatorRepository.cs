@@ -44,11 +44,11 @@ namespace Calculator.Repositories
         {
             List<ElementEquation> elements = SeparationEquation.GetElementsEquation(equation);
 
-            while (elements.Count > 1)
+            while ( (elements.Count > 1) || (elements[0].Operation.Operator == OperatorType.Brackets) )
             {
                 LevelType maxLevel = CalculationEquation.GetMaxLevelOperation(elements);
 
-                for (int i = 0; i < elements.Count; i++)
+                for (int i = 0; i < elements.Count ; i++)
                 {
                     if (elements[i].Operation.Level == maxLevel)
                     {

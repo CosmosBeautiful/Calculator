@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Calculator.Functional;
+using System;
 
 namespace Calculator.Repositories
 {
@@ -7,15 +8,21 @@ namespace Calculator.Repositories
         public string GetEquation()
         {
             string equation;
-#if !DEBUG
-            Console.WriteLine("Введите выражение:");
-            equation = Console.ReadLine();
-#else
-            equation = "42 + 18 / ( 6 + 12 / 4 )";
-#endif
 
-            //ToDo: Validation equation
-            return equation;
+            while (true)
+            {
+                Console.WriteLine("Введите выражение:");
+                Console.WriteLine("Подсказка: 42 + 18 / ( 6 + 12 / 4 )\n");
+                equation = Console.ReadLine();
+
+                bool isValid = ValidationEquation.IsValidate(equation);
+                if (isValid == true)
+                {
+                    equation = ValidationEquation.PreparationEquationPutSpaces(equation);
+                    return equation;
+                }
+                Console.WriteLine("Невалидное выражение, попробуйте снова.");
+            }
         }
     }
 }
