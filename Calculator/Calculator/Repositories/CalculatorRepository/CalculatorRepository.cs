@@ -8,6 +8,38 @@ namespace Calculator.Repositories
 {
     public class CalculatorRepository : ICalculatorRepository
     {
+        private void SolveNestedEquation(ref List<ElementEquation> elements, ref int i)
+        {
+            double resultNested = SolveEquation(elements[i].NestedEquation);
+            elements[i] = new ElementEquation(resultNested);
+            if (elements.Count > (i + 1))
+            {
+                elements[i].Operation = elements[i + 1].Operation;
+                elements.RemoveAt(i + 1);
+                i--;
+            }
+        }
+
+        private void MakeOperation(ref List<ElementEquation> elements, ref int i)
+        {
+            if (elements.Count >= 2)
+            {
+                elements[i + 1].Number = CalculationEquation.MakeOperation(elements[i], elements[i].Operation.Operator, elements[i + 1]);
+                elements.RemoveAt(i);
+                i--;
+            }
+        }
+
+        private double GetResultEquation(List<ElementEquation> elements)
+        {
+            if (elements.Count != 1)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+
+            return elements[0].Number;
+        }
+
         public double SolveEquation(string equation)
         {
             List<ElementEquation> elements = SeparationEquation.GetElementsEquation(equation);
@@ -22,28 +54,18 @@ namespace Calculator.Repositories
                     {
                         if (elements[i].Operation.Operator == OperatorType.Brackets)
                         {
-                            double resultNested = SolveEquation(elements[i].NestedEquation);
-                            elements[i] = new ElementEquation(resultNested);
-                            if ( elements.Count > (i + 1) )
-                            {
-                                elements[i].Operation = elements[i + 1].Operation;
-                                elements.RemoveAt(i + 1);
-                                i--;
-                            }
+                            SolveNestedEquation(ref elements, ref i);
                         }
                         else
                         {
-                            if (elements.Count >= 2)
-                            {
-                                elements[i + 1].Number = CalculationEquation.CalculationElements(elements[i], elements[i].Operation.Operator, elements[i + 1]);
-                                elements.RemoveAt(i);
-                                i--;
-                            }
+                            MakeOperation(ref elements, ref i);
                         }
                     }
                 }
             }
-            return elements[0].Number;
+
+            double result = GetResultEquation(elements);
+            return result;
         }
     }
 }

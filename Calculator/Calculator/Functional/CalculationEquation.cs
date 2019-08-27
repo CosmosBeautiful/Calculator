@@ -22,7 +22,7 @@ namespace Calculator.Functional
             return max;
         }
 
-        public static double CalculationElements(ElementEquation x, OperatorType operatorType, ElementEquation y)
+        public static double MakeOperation(ElementEquation x, OperatorType operatorType, ElementEquation y)
         {
             double result = 0;
             switch (operatorType)
