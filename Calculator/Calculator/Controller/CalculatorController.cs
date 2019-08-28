@@ -1,9 +1,9 @@
-﻿using Calculator.Repositories;
-using System;
+﻿using Calculator.DI;
+using Calculator.Repositories;
 
 namespace Calculator.Controller
 {
-    public class CalculatorController
+    public class CalculatorController : ICalculator
     {
         protected IInputRepository inputRepository;
         protected ICalculatorRepository calculatorRepository;
