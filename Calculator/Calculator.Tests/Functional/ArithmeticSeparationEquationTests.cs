@@ -1,4 +1,4 @@
-﻿using Calculator.Functional;
+﻿using Calculator.Functional.Arithmetic;
 using Calculator.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
@@ -6,8 +6,16 @@ using System.Collections.Generic;
 namespace Calculator.Tests.Functional
 {
     [TestClass]
-    public class SeparationEquationTests
+    public class ArithmeticSeparationEquationTests
     {
+        private ArithmeticSeparationEquation arithmeticSeparation;
+
+        [TestInitialize]
+        public void ClassInitialize()
+        {
+            arithmeticSeparation = new ArithmeticSeparationEquation();
+        }
+
         [TestMethod]
         public void GetElementsEquation_Equation_ReturnListElementsEquation()
         {
@@ -21,7 +29,7 @@ namespace Calculator.Tests.Functional
             };
 
             // act
-            List<ElementEquation> actualElements = SeparationEquation.GetElementsEquation(equation);
+            List<ElementEquation> actualElements = arithmeticSeparation.GetElementsEquation(equation);
 
             // assert
             CollectionAssert.AreEqual(exectedElements, actualElements);

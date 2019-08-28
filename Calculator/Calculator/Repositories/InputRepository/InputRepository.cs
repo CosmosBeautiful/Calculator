@@ -5,6 +5,13 @@ namespace Calculator.Repositories
 {
     public class InputRepository : IInputRepository
     {
+        private IValidationEquation validationEquation;
+
+        public InputRepository(IValidationEquation validationEquation)
+        {
+            this.validationEquation = validationEquation;
+        }
+
         public string GetEquation()
         {
             string equation;
@@ -15,10 +22,10 @@ namespace Calculator.Repositories
                 Console.WriteLine("Подсказка: 42 + 18 / ( 6 + 12 / 4 )\n");
                 equation = Console.ReadLine();
 
-                bool isValid = ValidationEquation.IsValidate(equation);
+                bool isValid = validationEquation.IsValidate(equation);
                 if (isValid == true)
                 {
-                    equation = ValidationEquation.PreparationEquationPutSpaces(equation);
+                    equation = validationEquation.PreparationEquationPutSpaces(equation);
                     return equation;
                 }
                 Console.WriteLine("Невалидное выражение, попробуйте снова.");

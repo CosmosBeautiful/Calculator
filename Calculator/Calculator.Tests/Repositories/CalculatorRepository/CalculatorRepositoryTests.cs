@@ -1,29 +1,30 @@
 ﻿using Calculator.Repositories;
-using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
+using Calculator.Functional;
+using Calculator.Functional.Arithmetic;
 
 namespace Calculator.Tests.Repositories.CalculatorRepositoryTests
 {
     [TestClass]
     public class CalculatorRepositoryTests
     {
-        //public TestContext TestContextInstance { get; set; }
+        private ISeparationEquation separationEquation;
+        private ICalculationEquation calculationEquation;
         private ICalculatorRepository calculatorRepository;
 
         [TestInitialize]
         public void ClassInitialize()
         {
-            calculatorRepository = new CalculatorRepository();
+            separationEquation = new ArithmeticSeparationEquation();
+            calculationEquation = new ArithmeticCalculationEquation();
+            calculatorRepository = new CalculatorRepository(separationEquation, calculationEquation);
         }
-
-        //[DataSource("Microsoft.VisualStudio.TestTools.DataSource.XML", "|DataDirectory|/testDataEquation.xml", "Equation", DataAccessMethod.Sequential)]
+        
         [TestMethod]
         public void SolveEquation()
         {
             // arrange
-            //string equation = Convert.ToString(TestContextInstance.DataRow["equation"]);
-
             Dictionary<string, double> equations = new Dictionary<string, double>
             {
                 { "42 + 18 / ( 6 + 12 / 4 )", 44},

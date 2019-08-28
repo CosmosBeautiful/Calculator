@@ -1,15 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Calculator.Functional;
-using Calculator.Models;
+﻿using Calculator.Functional.Arithmetic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
 
 namespace Calculator.Tests.Functional
 {
     [TestClass]
-    public class ValidationEquationTests
+    public class ArithmeticValidationEquationTests
     {
+        private ArithmeticValidationEquation arithmeticValidation;
+
+        [TestInitialize]
+        public void ClassInitialize()
+        {
+            arithmeticValidation = new ArithmeticValidationEquation();
+        }
+
         [TestMethod]
         public void PreparationEquationPutSpaces()
         {
@@ -25,7 +30,7 @@ namespace Calculator.Tests.Functional
             foreach (var equation in equations)
             {
                 // act
-                string actualEquation = ValidationEquation.PreparationEquationPutSpaces(equation.Key);
+                string actualEquation = arithmeticValidation.PreparationEquationPutSpaces(equation.Key);
 
                 // assert
                 Assert.AreEqual(equation.Value, actualEquation, $"{equation.Value} != {actualEquation}");
@@ -49,7 +54,7 @@ namespace Calculator.Tests.Functional
             foreach (var equation in equations)
             {
                 // act
-                bool actualValid = ValidationEquation.IsValidate(equation.Key);
+                bool actualValid = arithmeticValidation.IsValidate(equation.Key);
 
                 // assert
                 Assert.AreEqual(equation.Value, actualValid, $"{equation.Value} != {actualValid}");

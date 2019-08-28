@@ -1,15 +1,21 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Calculator.Functional;
+﻿using Calculator.Functional.Arithmetic;
 using Calculator.Models;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
 
 namespace Calculator.Tests.Functional
 {
     [TestClass]
-    public class CalculationEquationTests
+    public class ArithmeticCalculationEquationTests
     {
+        private ArithmeticCalculationEquation arithmeticCalculation;
+
+        [TestInitialize]
+        public void ClassInitialize()
+        {
+            arithmeticCalculation = new ArithmeticCalculationEquation();
+        }
+
         [TestMethod]
         public void GetMaxLevelOperation()
         {
@@ -23,7 +29,7 @@ namespace Calculator.Tests.Functional
             LevelType exectedLevel = LevelType.High;
 
             // act
-            LevelType actualLevel = CalculationEquation.GetMaxLevelOperation(elements);
+            LevelType actualLevel = arithmeticCalculation.GetMaxLevelOperation(elements);
 
             // assert
             Assert.AreEqual(exectedLevel, actualLevel);
@@ -39,7 +45,7 @@ namespace Calculator.Tests.Functional
             double exected = 60;
 
             // act
-            double actual = CalculationEquation.MakeOperation(elementsX, operatorX, elementsY);
+            double actual = arithmeticCalculation.MakeOperation(elementsX, operatorX, elementsY);
 
             // assert
             Assert.AreEqual(actual, exected);

@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 
-namespace Calculator.Functional
+namespace Calculator.Functional.Arithmetic
 {
-    public static class ValidationEquation
+    public class ArithmeticValidationEquation : IValidationEquation
     {
-        private static bool IsOperation(char elem)
+        private bool IsOperation(char elem)
         {
             return (elem == '(' || elem == ')' || elem == '+' || elem == '-' || elem == '*' || elem == '/');
         }
 
-        public static string PreparationEquationPutSpaces(string equation)
+        public string PreparationEquationPutSpaces(string equation)
         {
             for (int i = 0; i < equation.Length; i++)
             {
@@ -34,7 +31,7 @@ namespace Calculator.Functional
             return equation;
         }
 
-        public static bool IsValidate(string equation)
+        public bool IsValidate(string equation)
         {
             //^(\d+([*+-]|/(?!0)))+\d+$
             Regex rgx = new Regex(@"^([( ]*\d+([ )]*[*+-]|[ )]*/(?!0))[( ]*)+\d+[ )]*[ )]*$");

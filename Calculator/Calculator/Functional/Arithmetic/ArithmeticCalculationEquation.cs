@@ -1,13 +1,11 @@
 ﻿using Calculator.Models;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace Calculator.Functional
+namespace Calculator.Functional.Arithmetic
 {
-    public static class CalculationEquation
+    public class ArithmeticCalculationEquation : ICalculationEquation
     {
-        public static LevelType GetMaxLevelOperation(List<ElementEquation> elements)
+        public LevelType GetMaxLevelOperation(List<ElementEquation> elements)
         {
             LevelType max = LevelType.Low;
 
@@ -22,7 +20,7 @@ namespace Calculator.Functional
             return max;
         }
 
-        public static double MakeOperation(ElementEquation x, OperatorType operatorType, ElementEquation y)
+        public double MakeOperation(ElementEquation x, OperatorType operatorType, ElementEquation y)
         {
             double result = 0;
             switch (operatorType)

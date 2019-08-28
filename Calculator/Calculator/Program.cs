@@ -1,6 +1,7 @@
 ﻿using Calculator.Controller;
+using Calculator.Functional;
+using Calculator.Functional.Arithmetic;
 using Calculator.Repositories;
-using System;
 
 namespace Calculator
 {
@@ -9,21 +10,17 @@ namespace Calculator
         static void Main()
         {
             //Poor Man's DI
-            IInputRepository inputRepository = new InputRepository();
+            IValidationEquation validationRepository = new ArithmeticValidationEquation();
+            ISeparationEquation separationEquation = new ArithmeticSeparationEquation();
+            ICalculationEquation calculationEquation = new ArithmeticCalculationEquation();
+
+            IInputRepository inputRepository = new InputRepository(validationRepository);
             IPrintRepository printRepository = new PrintRepository();
-            ICalculatorRepository calculatorRepository = new CalculatorRepository();
+            ICalculatorRepository calculatorRepository = new CalculatorRepository(separationEquation, calculationEquation);
+
             CalculatorController calculator = new CalculatorController(inputRepository, printRepository, calculatorRepository);
 
             calculator.SolveEquation();
-
-            //Выполнение ->
-            //(
-            //Ввод данных
-
-            //Вызов обработчика
-
-            //Вывод данных
-            //)
         }
     }
 }

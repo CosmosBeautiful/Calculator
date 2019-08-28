@@ -2,11 +2,11 @@
 using System;
 using System.Collections.Generic;
 
-namespace Calculator.Functional
+namespace Calculator.Functional.Arithmetic
 {
-    public static class SeparationEquation
+    public class ArithmeticSeparationEquation : ISeparationEquation
     {
-        private static int GetNextElementAfterNestedEquation(string[] arrayElements, int item)
+        private int GetNextElementAfterNestedEquation(string[] arrayElements, int item)
         {
             int skipCloseBraket = 0;
 
@@ -35,7 +35,7 @@ namespace Calculator.Functional
             throw new ArgumentOutOfRangeException();
         }
 
-        private static string GetNestedEquation(string[] arrayElements, int startItem, int endItem)
+        private string GetNestedEquation(string[] arrayElements, int startItem, int endItem)
         {
             string nestedEquation = "";
 
@@ -48,7 +48,7 @@ namespace Calculator.Functional
             return nestedEquation;
         }
 
-        public static List<ElementEquation> GetElementsEquation(string equation)
+        public List<ElementEquation> GetElementsEquation(string equation)
         {
             List<ElementEquation> elements = new List<ElementEquation>();
 

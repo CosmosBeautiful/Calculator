@@ -1,15 +1,15 @@
-using Calculator.Controller;
+﻿using Calculator.Controller;
 using Calculator.Repositories;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
-namespace Calculator.Tests
+namespace Calculator.Tests.Controller
 {
     [TestClass]
-    public class Program
+    public class CalculatorControllerTests
     {
         [TestMethod]
-        public void Main_CreateDependencyInjection()
+        public void SolveEquation()
         {
             // arrange
             Mock<IInputRepository> mockInputRepository = new Mock<IInputRepository>();
