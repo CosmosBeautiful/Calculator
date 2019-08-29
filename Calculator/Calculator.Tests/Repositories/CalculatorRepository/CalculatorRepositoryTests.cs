@@ -33,7 +33,9 @@ namespace Calculator.Tests.Repositories.CalculatorRepositoryTests
                 { "( 5 * 2 ) / ( 12 / 6 )", 5},
                 { "( 100 / 5 + 62 * 2 + ( 44 - 22 / 10 ) ) + ( 84 * 56 / ( 12 / 6 ) + 90 - ( 5 * 5 - 1 ) )", 2603.8},
                 { "17 + 9 / ( 4 - 1 ) * 65", 212},
-                { "( 4 - 1 ) * 2", 6}
+                { "( 4 - 1 ) * 2", 6},
+                { "10 + -6", 4},
+                { "10 + ( 0 - 6 )", 4}
             };
 
             foreach (var equation in equations)
