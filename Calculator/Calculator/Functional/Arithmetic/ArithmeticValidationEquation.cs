@@ -108,7 +108,14 @@ namespace Calculator.Functional.Arithmetic
 
         public bool IsValidate(string equation)
         {
-            Regex rgx = new Regex(@"^([( -]*\d+,?\d*([ )]*[*+-]|[ )]*/(?!0))[( -]*)+\d+,?\d*[ )]*$");
+            string beginBrackets = "[( -]*";
+            string endBrackets = "[ )]*";
+
+            string number = "\\d+,?\\d*";
+            string operand = "([*+-]|[ )]*/(?!0))";
+
+            string pattern = $"({beginBrackets}{number}{endBrackets}{operand}{beginBrackets})+{number}{endBrackets}";
+            Regex rgx = new Regex(@"^"+ pattern + "$");
             bool isRgxValid = rgx.IsMatch(equation);
 
             int countBrackets = 0;
