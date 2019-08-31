@@ -4,7 +4,7 @@ using Calculator.Repositories;
 using System;
 using System.Collections.Generic;
 
-namespace Calculator.Tests.Controller.Stub
+namespace Calculator.Tests.Stub
 {
     public class InputRepositoryStub : IInputRepository
     {

@@ -17,7 +17,7 @@ namespace Calculator.Tests.Functional
         }
 
         [TestMethod]
-        public void GetMaxLevelOperation()
+        public void GetMaxLevelOperation_ElementsEquation_ReturnHighLevel()
         {
             // arrange
             List<ElementEquation> elements = new List<ElementEquation>
@@ -36,7 +36,7 @@ namespace Calculator.Tests.Functional
         }
 
         [TestMethod]
-        public void MakeOperation()
+        public void MakeOperation_15Mul4_Return60()
         {
             // arrange
             ElementEquation elementsX = new ElementEquation(15, OperatorType.Mul);

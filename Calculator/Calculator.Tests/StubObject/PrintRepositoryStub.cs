@@ -1,6 +1,6 @@
 ﻿using Calculator.Repositories;
 
-namespace Calculator.Tests.Controller.Stub
+namespace Calculator.Tests.Stub
 {
     public class PrintRepositoryStub : IPrintRepository
     {

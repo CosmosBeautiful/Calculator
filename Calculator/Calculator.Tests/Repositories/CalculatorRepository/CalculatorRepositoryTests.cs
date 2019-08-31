@@ -22,7 +22,7 @@ namespace Calculator.Tests.Repositories.CalculatorRepositoryTests
         }
         
         [TestMethod]
-        public void SolveEquation()
+        public void SolveEquation_ValidEquations_ReturnResults()
         {
             // arrange
             Dictionary<string, double> equations = new Dictionary<string, double>

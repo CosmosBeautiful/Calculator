@@ -16,7 +16,7 @@ namespace Calculator.Tests.Functional
         }
 
         [TestMethod]
-        public void PreparationEquationPutSpaces()
+        public void PreparationEquationPutSpaces_Equations_ReturnValidEquations()
         {
             // arrange
             Dictionary<string, string> equations = new Dictionary<string, string>
@@ -41,7 +41,7 @@ namespace Calculator.Tests.Functional
         }
 
         [TestMethod]
-        public void IsValidate()
+        public void IsValidate_Equations_ReturnIsValid()
         {
             // arrange
             Dictionary<string, bool> equations = new Dictionary<string, bool>
