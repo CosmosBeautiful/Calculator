@@ -1,6 +1,7 @@
 ﻿using Calculator.Functional;
 using Calculator.Functional.Arithmetic;
 using Calculator.Repositories;
+using System;
 using System.Collections.Generic;
 
 namespace Calculator.Tests.Controller.Stub
@@ -26,9 +27,10 @@ namespace Calculator.Tests.Controller.Stub
             if (isValid == true)
             {
                 equation = validationEquation.PreparationEquationPutSpaces(equation);
+                return equation;
             }
 
-            return equation;
+            throw new ArgumentException(equation);
         }
     }
 }

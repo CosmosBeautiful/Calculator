@@ -24,6 +24,11 @@ namespace Calculator.Functional.Arithmetic
 
         private string PreparationNegativeNumber(string equation, int item)
         {
+            if ( (equation[item]== '(') || (equation[item] == ')') )
+            {
+                return equation;
+            }
+
             bool isNegativeOperator = false;
             int itemNegativeOperator = 0;
 
@@ -38,7 +43,7 @@ namespace Calculator.Functional.Arithmetic
                     int number;
                     bool isNumber = int.TryParse(equation[i].ToString(), out number);
              
-                    if ( (isNumber == false) && (equation[i] != ',')  && (equation[i] != ' '))
+                    if ( (isNumber == false) && (equation[i] != ',')  && (equation[i] != ' ') )
                     {
                         equation = AddWrapperNegativeNumber(equation, itemNegativeOperator, countNegativeNumber);
                         break;
@@ -103,7 +108,7 @@ namespace Calculator.Functional.Arithmetic
 
         public bool IsValidate(string equation)
         {
-            Regex rgx = new Regex(@"^([( -]*\d+([ )]*[*+-]|[ )]*/(?!0))[( -]*)+\d+[ )]*$");
+            Regex rgx = new Regex(@"^([( -]*\d+,?\d*([ )]*[*+-]|[ )]*/(?!0))[( -]*)+\d+,?\d*[ )]*$");
             bool isRgxValid = rgx.IsMatch(equation);
 
             int countBrackets = 0;

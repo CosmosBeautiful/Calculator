@@ -65,8 +65,12 @@ namespace Calculator.Tests.Controller
             equations.Enqueue("( -10 * 2)/(12 + -2)");
             equations.Enqueue("17 + 9 / ( 4 - 1 ) * 65");
             equations.Enqueue("( 4 - 1 ) * 2");
+            equations.Enqueue("55,6 * 5 / 1,1 + 900 - 98 * ( 458 / 2 + 90 ) - 100");
+            equations.Enqueue("( -900 * 2 ) - 55 * ( 458 / 2 + 90 )");
+            equations.Enqueue("(-45 / 8 / 2 - 10) - -55 + 87 * ( (45 + -48) / 2 * 5 + 90 / 5 )");
+            equations.Enqueue("(5,2 + -98,8 / (5,6 - -1,4) * 4,1 * (50,5 / -5,5)) + -98,45 - -9,45 + 44,168");
 
-            double[] answer = { 1, 2603.8, 190, 4, -2, 212, 6 };
+            double[] answer = { 1, 2603.8, 190, 4, -2, 212, 6, -30209.272727272728, -3036, 955, 687, 491, 7067013, 491.70670129870132 };
 
             InputRepositoryStub inputRepositoryStub = new InputRepositoryStub(equations);
             PrintRepositoryStub printRepositoryStub = new PrintRepositoryStub();
